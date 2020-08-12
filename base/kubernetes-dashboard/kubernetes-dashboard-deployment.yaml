@@ -12,6 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# To see the dashboard:
+# 1. run the proxy:
+# kubectl proxy
+# 2. get the secret token
+# kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+# 3. login using that token
+# http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+
 ---
 kind: Deployment
 apiVersion: apps/v1
