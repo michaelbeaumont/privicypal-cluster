@@ -15,6 +15,11 @@ nodeGroups:
     instanceType: t2.micro
     ssh:
       allow: true # will use ~/.ssh/id_rsa.pub as the default ssh key
+    iam:
+      withAddonPolicies:
+        albIngress: true
+        autoScaler: true
+        cloudWatch: true
 
 git:
     repo:
@@ -26,7 +31,10 @@ git:
     operator:
         namespace: "flux"
         withHelm: true
-
+    bootstrapProfile:
+      source: app-dev
+      revision: master
+      
 iam:
   withOIDC: true
   serviceAccounts:
